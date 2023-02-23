@@ -27,9 +27,12 @@ USER_AGENTS = {
     }
 }
 
+GITHUB_USER = "gabrielscheffer"
 BRANCH = "master"
 GITHUB_url = (
-    "https://raw.githubusercontent.com/gabrielscheffer/Twitch-Channel-Points-Miner-v2/"
+    "https://raw.githubusercontent.com/"
+    + GITHUB_USER
+    + "/Twitch-Channel-Points-Miner-v2/"
     + BRANCH
 )
 
