@@ -139,7 +139,7 @@ class Twitch(object):
                 streamer.streamer_url, headers=headers)
             response = main_page_request.text
             # logger.info(response)
-            regex_settings = "(https://static.twitchcdn.net/config/settings.*?js)"
+            regex_settings = "(https://static.twitchcdn.net/config/settings.*?js|https://assets.twitch.tv/config/settings.*?.js)"
             settings_url = re.search(regex_settings, response).group(1)
 
             settings_request = requests.get(settings_url, headers=headers)
@@ -397,7 +397,7 @@ class Twitch(object):
 
                     elif (
                         prior in [Priority.POINTS_ASCENDING,
-                                  Priority.POINTS_DESCEDING]
+                                  Priority.POINTS_DESCENDING]
                         and len(streamers_watching) < 2
                     ):
                         items = [
@@ -409,7 +409,7 @@ class Twitch(object):
                             items,
                             key=lambda x: x["points"],
                             reverse=(
-                                True if prior == Priority.POINTS_DESCEDING else False
+                                True if prior == Priority.POINTS_DESCENDING else False
                             ),
                         )
                         streamers_watching += [item["index"]
